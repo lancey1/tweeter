@@ -1,0 +1,21 @@
+.head {
+  margin-top: 120px;
+  height: 400px;
+  background-color: #000000;
+  background-image: url("https://www.transparenttextures.com/patterns/batthern.png");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  width: 100%;
+}
+
+.head .name h2 {
+  color: white;
+  font-weight: 300;
+}
+
+.head .name h2 span {
+  font-weight: 600;
+}
+
