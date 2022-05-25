@@ -46,6 +46,7 @@ $(document).ready(function () {
       alert("You wrote too much!");
     } else {
       $.post("/tweets", tweetData, function () {});
+      loadTweets();
     }
   });
 
