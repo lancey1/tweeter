@@ -44,11 +44,13 @@ footer {
   display: flex;
   justify-content: space-between;
   font-weight: 600;
+
 }
 
 
 .icons {
   color: grey;
+  display: flex;
 }
 
 .fa-retweet:hover {
@@ -57,6 +59,11 @@ footer {
 
 .fa-flag:hover {
   color: #4056A1;
+}
+
+.fa-flag{
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .fa-heart:hover {
