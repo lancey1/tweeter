@@ -38,8 +38,17 @@ $(document).ready(function () {
   $("button").click(function (event) {
     event.preventDefault();
     const tweetData = $("form").serialize();
-    $.post("/tweets", tweetData, function () {});
+    let datalength = $("#tweet-text").val().length;
+    if ((datalength === 0)) {
+      alert("Write something to Tweet!");
+    }
+    if (datalength > 140) {
+      alert("You wrote too much!");
+    } else {
+      $.post("/tweets", tweetData, function () {});
+    }
   });
+
   // Gets information from /tweets.
   const loadTweets = function () {
     $.ajax({
