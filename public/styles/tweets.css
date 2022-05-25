@@ -8,6 +8,7 @@ article{
   padding-right: 1em;
   padding-top: .5em;
   padding-bottom: 200px;
+  flex-wrap: wrap;
 }
 
 article:hover {
@@ -21,6 +22,7 @@ header{
   display: flex;
   justify-content:space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .username {
@@ -49,14 +51,14 @@ footer {
   color: grey;
 }
 
-#retweet:hover {
+.fa-retweet:hover {
   color: #4056A1;
 }
 
-#flag:hover {
+.fa-flag:hover {
   color: #4056A1;
 }
 
-#heart:hover {
+.fa-heart:hover {
   color: red;
 }
