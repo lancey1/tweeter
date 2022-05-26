@@ -15,7 +15,7 @@ const createTweetElement = function (tweetData) {
         <div class="userid">${tweetData.user.handle}</div>
       </header>
       <main class='tweet-content'>
-      ${tweetData.content.text}
+      ${escape(tweetData.content.text)}
       </main>
       <footer>
         <div class="timestamp"> ${timeago.format(tweetData.created_at)}</div>
@@ -39,16 +39,29 @@ $(document).ready(function () {
     event.preventDefault();
     const tweetData = $("form").serialize();
     let datalength = $("#tweet-text").val().length;
-    if ((datalength === 0)) {
+    if (datalength === 0) {
       alert("Write something to Tweet!");
     }
     if (datalength > 140) {
       alert("You wrote too much!");
     } else {
       $.post("/tweets", tweetData, function () {});
-      loadTweets();
+      loadNewestTweet();
     }
   });
+
+  //Gets the most recent tweet from /tweets
+  const loadNewestTweet = function () {
+    $.ajax({
+      type: "GET",
+      url: "/tweets",
+      dataType: "json",
+      success: function (response) {
+        let lastElement = response[response.length - 1];
+        $('.tweet-container').prepend(createTweetElement(lastElement));
+      },
+    });
+  };
 
   // Gets information from /tweets.
   const loadTweets = function () {
@@ -63,3 +76,9 @@ $(document).ready(function () {
   };
   loadTweets();
 });
+
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
