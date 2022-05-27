@@ -2,7 +2,9 @@
 
 Tweeter is a simple, single-page Twitter clone.
 
+### Features
 
+- Write Tweets and see them in realtime without refreshing
 
 ## Final Product
 
