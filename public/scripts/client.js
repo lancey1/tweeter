@@ -46,7 +46,7 @@ const loadNewestTweet = function () {
   });
 };
 
-// Gets information from /tweets.
+// Gets information from /tweets and displays it.
 const loadTweets = function () {
   $.ajax({
     type: "GET",
@@ -57,25 +57,36 @@ const loadTweets = function () {
     },
   });
 };
-
+// displays the tweets & hides the validation error section on page load
 $(document).ready(function () {
+  $(".validation-error").hide();
   loadTweets();
 });
 
-$(document).ready(function () {
-  $(".validation-error").hide();
+//helper function to prevent XSS attacks
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
+$(document).ready(function () {
   // on button click sends a POST request to /tweets with user information and tweet data
   $("button").click(function (event) {
     event.preventDefault();
     const $tweetData = $("form").serialize();
     let datalength = $("#tweet-text").val().length;
+    // if tweet length is 0 displays an error message.
     if (datalength === 0) {
       $(".validation-error").slideDown().text("Write something to Tweet");
     }
+    // if tweet length is over the character limit displays an error message
     if (datalength > 140) {
       $(".validation-error").slideDown().text("You know the saying less is more that applies here");
     } else {
+    //  On successful tweet post the tweet is sent to /tweets, and is retreived 
+    //  by the function loadNewestTweet to be displayed, resets the text area and counter to default
+    //  hides the error message if present 
       $.post("/tweets", $tweetData, function () {
         const tweetValue = document.getElementById("tweet-text");
         let counterValue = document.getElementById("counter");
@@ -87,9 +98,3 @@ $(document).ready(function () {
     }
   });
 });
-
-const escape = function (str) {
-  let div = document.createElement("div");
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-};

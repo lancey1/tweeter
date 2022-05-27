@@ -42,7 +42,7 @@
     
     <!-- CDN timeago.js to help with displaying the time -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" ></script>  
-    
+
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
   </head>
 
@@ -59,7 +59,6 @@
         </button>
       </footer>
     </nav>
-
     <!-- Header section -->
     <header class="head">
       <div>
@@ -70,11 +69,12 @@
           <h2>Lance Y</h2>
       </div>
     </header>
-
     <!-- Main Section -->
     <main class="container">
       <section class="new-tweet">
+        <!-- Error Message section -->
         <section class="validation-error"></section>
+        <!-- Create new tweet section -->
         <form method="POST" action="/tweets">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text" placeholder=""></textarea>
@@ -84,12 +84,9 @@
           </div>
         </form>
       </section>
-
+      <!-- Tweets Section -->
     <section class="tweet-container">
-        </footer>
-      </article>
     </section>
-
     </main>
   </body>
 </html>
