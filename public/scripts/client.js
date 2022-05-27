@@ -83,7 +83,7 @@ $(document).ready(function () {
     if (datalength > 140) {
       $(".validation-error").slideDown().text("You know the saying less is more that applies here");
     } else {
-    //  On successful tweet post the tweet is sent to /tweets, and is retreived 
+    //  On successful tweet post, sends a POST request to /tweets, and is retreived 
     //  by the function loadNewestTweet to be displayed, resets the text area and counter to default
     //  hides the error message if present 
       $.post("/tweets", $tweetData, function () {
