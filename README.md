@@ -13,7 +13,7 @@ Tweeter is a simple, single-page Twitter clone.
 !["Error validation feature"](https://github.com/lancey1/tweeter/blob/master/docs/Screenshot%20from%202022-05-26%2022-04-25.png)
 - Error validation feature
 !["Mobile view of Tweeter"](https://github.com/lancey1/tweeter/blob/master/docs/Screenshot%20from%202022-05-26%2022-05-28.png)
-- Mobile view of Tweeter
+- "Mobile" view of Tweeter
 
 ## Getting Started
 
