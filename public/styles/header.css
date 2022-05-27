@@ -19,3 +19,10 @@
   font-weight: 600;
 }
 
+@media only screen and (min-width:1024px) {
+  .head {
+    margin-top: 4.65em;
+    margin-left: 2em;
+    width: 500px;
+  }
+}

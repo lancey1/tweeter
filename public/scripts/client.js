@@ -33,11 +33,36 @@ const renderTweets = function (tweets) {
   });
 };
 
+//Gets the most recent tweet from /tweets
+const loadNewestTweet = function () {
+  $.ajax({
+    type: "GET",
+    url: "/tweets",
+    dataType: "json",
+    success: function (response) {
+      let lastElement = response[response.length - 1];
+      $(".tweet-container").prepend(createTweetElement(lastElement));
+    },
+  });
+};
+
+// Gets information from /tweets.
+const loadTweets = function () {
+  $.ajax({
+    type: "GET",
+    url: "/tweets",
+    dataType: "json",
+    success: function (response) {
+      renderTweets(response);
+    },
+  });
+};
+
 $(document).ready(function () {
   // on button click sends a POST request to /tweets with user information and tweet data
   $("button").click(function (event) {
     event.preventDefault();
-    const tweetData = $("form").serialize();
+    const $tweetData = $("form").serialize();
     let datalength = $("#tweet-text").val().length;
     if (datalength === 0) {
       alert("Write something to Tweet!");
@@ -45,35 +70,18 @@ $(document).ready(function () {
     if (datalength > 140) {
       alert("You wrote too much!");
     } else {
-      $.post("/tweets", tweetData, function () {});
-      loadNewestTweet();
+      $.post("/tweets", $tweetData, function () {
+        const tweetValue = document.getElementById("tweet-text");
+        let counterValue = document.getElementById("counter");
+        tweetValue.value = "";
+        counterValue.innerHTML = 140;
+        loadNewestTweet();
+      });
     }
   });
+});
 
-  //Gets the most recent tweet from /tweets
-  const loadNewestTweet = function () {
-    $.ajax({
-      type: "GET",
-      url: "/tweets",
-      dataType: "json",
-      success: function (response) {
-        let lastElement = response[response.length - 1];
-        $('.tweet-container').prepend(createTweetElement(lastElement));
-      },
-    });
-  };
-
-  // Gets information from /tweets.
-  const loadTweets = function () {
-    $.ajax({
-      type: "GET",
-      url: "/tweets",
-      dataType: "json",
-      success: function (response) {
-        renderTweets(response);
-      },
-    });
-  };
+$(document).ready(function () {
   loadTweets();
 });
 

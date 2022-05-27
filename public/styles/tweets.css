@@ -1,14 +1,14 @@
 article{
-  margin-top: 100px;
-  margin-bottom: 2em;
+  margin-top: 65px;
+  margin-bottom: 10px;
   border: solid;
-  width: 1200px;
-  height: 200px;
+  width:auto;
   padding-left: 1em;
   padding-right: 1em;
   padding-top: .5em;
-  padding-bottom: 200px;
-  flex-wrap: wrap;
+  padding-bottom: 1em;
+  height: auto;
+  max-height: fit-content;
 }
 
 article:hover {
@@ -22,7 +22,6 @@ header{
   display: flex;
   justify-content:space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .username {
@@ -31,7 +30,7 @@ header{
 
 
 .tweet-content{
-  margin: .5em
+  margin: .5em;
 }
 
 footer {
@@ -44,28 +43,28 @@ footer {
   display: flex;
   justify-content: space-between;
   font-weight: 600;
-
 }
-
 
 .icons {
   color: grey;
-  display: flex;
-}
 
+}
 .fa-retweet:hover {
   color: #4056A1;
 }
-
 .fa-flag:hover {
   color: #4056A1;
 }
-
 .fa-flag{
   padding-left: 5px;
   padding-right: 5px;
 }
-
 .fa-heart:hover {
   color: red;
+}
+
+@media only screen and (min-width:1024px) {
+  .tweet-container{
+    width: 90%;
+  }
 }
