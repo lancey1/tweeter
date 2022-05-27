@@ -1,0 +1,11 @@
+.validation-error{
+  color: red;
+  align-self: center;
+  justify-content: center;
+  padding: 2em;
+  padding-right: 6em;
+  padding-left: 6em;
+  border-color:red;
+  border: solid;
+  margin-bottom: 1em;
+}

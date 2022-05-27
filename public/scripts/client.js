@@ -59,30 +59,33 @@ const loadTweets = function () {
 };
 
 $(document).ready(function () {
+  loadTweets();
+});
+
+$(document).ready(function () {
+  $(".validation-error").hide();
+
   // on button click sends a POST request to /tweets with user information and tweet data
   $("button").click(function (event) {
     event.preventDefault();
     const $tweetData = $("form").serialize();
     let datalength = $("#tweet-text").val().length;
     if (datalength === 0) {
-      alert("Write something to Tweet!");
+      $(".validation-error").slideDown().text("Write something to Tweet");
     }
     if (datalength > 140) {
-      alert("You wrote too much!");
+      $(".validation-error").slideDown().text("You know the saying less is more that applies here");
     } else {
       $.post("/tweets", $tweetData, function () {
         const tweetValue = document.getElementById("tweet-text");
         let counterValue = document.getElementById("counter");
         tweetValue.value = "";
         counterValue.innerHTML = 140;
+        $(".validation-error").hide();
         loadNewestTweet();
       });
     }
   });
-});
-
-$(document).ready(function () {
-  loadTweets();
 });
 
 const escape = function (str) {
