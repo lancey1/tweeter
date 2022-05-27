@@ -71,7 +71,6 @@ const escape = function (str) {
 };
 
 $(document).ready(function () {
-  // on button click sends a POST request to /tweets with user information and tweet data
   $("button").click(function (event) {
     event.preventDefault();
     const $tweetData = $("form").serialize();
